@@ -25,6 +25,8 @@ view: order_items {
     type: string
     sql: ${TABLE}.phones ;;
   }
+
+  ## BBCD
   dimension_group: returned {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
