@@ -20,6 +20,10 @@ view: orders {
     type: number
     sql: POSITION('e'IN ${status}) ;;
   }
+  dimension: status_gen {
+    type: string
+    sql: concat(${status}, " ",${users.gender}) ;;
+  }
   dimension: user_id {
     type: number
     # hidden: yes
