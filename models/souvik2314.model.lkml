@@ -1,5 +1,7 @@
 connection: "thelook"
 
+include: "/vis_change_issue_test_2312_moonactive.dashboard.lookml"
+
 # include all the views
 include: "/views/**/*.view.lkml"
 
