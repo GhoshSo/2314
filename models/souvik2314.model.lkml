@@ -28,6 +28,8 @@ explore: billion_orders {
 
 ###TheBBCD
 
+explore: derived_order_items_temp_check {}
+
 explore: connection_reg_r3 {}
 
 explore: dept {}
