@@ -12,6 +12,14 @@ view: orders {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
+  measure: created_max {
+    type: max
+    sql: ${created_date} ;;
+  }
+  measure: created_max_2 {
+    type:  string
+    sql: DATE(MAX(${created_raw})) ;;
+  }
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
