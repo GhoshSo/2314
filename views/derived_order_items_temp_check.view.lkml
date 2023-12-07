@@ -33,6 +33,7 @@ view: derived_order_items_temp_check {
       ORDER BY
           1 DESC
       LIMIT 500 ;;
+    # datagroup_trigger: souvik2314_default_datagroup
   }
 
   filter: user_state {

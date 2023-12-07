@@ -29,20 +29,36 @@ view: order_items {
   ## BBCD
   dimension_group: returned {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, week_of_year, month, quarter, year]
     sql: ${TABLE}.returned_at ;;
   }
   dimension: sale_price {
     type: number
-    sql: ${TABLE}.sale_price ;;
+    sql: round(${TABLE}.sale_price) ;;
   }
-  measure: sp {
+  measure: total_sp {
     type: number
-    sql: ${sale_price} ;;
+    sql: SUM(${sale_price}) ;;
+    # #html: <p><font color="#005AB2">{{rendered_value}} </font> </p> ;;
+     link: {
+       label: "Count"
+       url: " {% assign vis_config = '{\"type\":\"looker_scatter\"}' %}
+       {{ count._link }}&vis_config={{ vis_config | encode_uri }}&&toggle=vis"
+     }
   }
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
+  }
+
+  measure: div {
+    type: number
+    sql: ${total_sp}/${count_dis} ;;
+  }
+
+  measure: count_dis {
+    type: number
+    sql: COUNT( DISTINCT(${order_id})) ;;
   }
 
 }
