@@ -42,7 +42,7 @@ view: order_items {
     # #html: <p><font color="#005AB2">{{rendered_value}} </font> </p> ;;
      link: {
        label: "Count"
-       url: " {% assign vis_config = '{\"type\":\"looker_scatter\"}' %}
+       url: " {% assign vis_config = '{\"type\":\"single_value\"}' %}
        {{ count._link }}&vis_config={{ vis_config | encode_uri }}&&toggle=vis"
      }
   }
