@@ -7,6 +7,18 @@ view: order_items {
     type: number
     sql: ${TABLE}.id ;;
   }
+  parameter: ABC {
+    label: "DEF"
+    type: unquoted
+    allowed_value: {
+      value: "123"
+      label: "!@#"
+    }
+    allowed_value: {
+      value: "456"
+      label: "$%^"
+    }
+  }
   dimension: inventory_item_id {
     type: number
     # hidden: yes
@@ -24,6 +36,15 @@ view: order_items {
   dimension: phones {
     type: string
     sql: ${TABLE}.phones ;;
+  }
+
+  measure: dynamic_measure {
+    #label_from_parameter: measure_selector
+    type: number
+    sql:
+      {% if ABC._parameter_value == 123 %} ${count}
+      {% else %} ${total_sp}
+      {% endif %};;
   }
 
   ## BBCD
