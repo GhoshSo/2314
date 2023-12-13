@@ -22,6 +22,8 @@ view: flights {
     type: number
     sql: ${TABLE}.dep_delay ;;
   }
+
+  ####
   dimension_group: dep {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
