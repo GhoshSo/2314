@@ -14,7 +14,7 @@ view: users {
   }
   dimension: dynamic {
     type: string
-    sql: {% if anything._parameter_value == "Alaska" %} ${city}
+    sql: {% if anything._parameter_value == "" %} ${city}
       {% else %} ${country}
       {% endif %};;
   }
