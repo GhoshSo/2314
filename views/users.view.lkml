@@ -7,6 +7,17 @@ view: users {
     type: number
     sql: ${TABLE}.id ;;
   }
+  parameter: anything {
+    type: unquoted
+    suggest_dimension: state
+    suggest_explore: users
+  }
+  dimension: dynamic {
+    type: string
+    sql: {% if anything._parameter_value == "Alaska" %} ${city}
+      {% else %} ${country}
+      {% endif %};;
+  }
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
