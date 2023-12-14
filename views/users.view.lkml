@@ -18,10 +18,7 @@ view: users {
       {% else %} ${country}
       {% endif %};;
   }
-  dimension: age {
-    type: number
-    sql: ${TABLE}.age ;;
-  }
+
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
@@ -31,6 +28,10 @@ view: users {
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
+  }
+  dimension: age {
+    type: number
+    sql: ${TABLE}.age ;;
   }
   dimension_group: created {
     type: time
