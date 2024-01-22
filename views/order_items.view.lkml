@@ -47,12 +47,20 @@ view: order_items {
       {% endif %};;
   }
 
-  ## BBCD
+
   dimension_group: returned {
     type: time
-    timeframes: [raw, time, date, week, week_of_year, month, quarter, year]
+    timeframes: [raw, time, date, week, week_of_year, month, quarter, year,month_name]
     sql: ${TABLE}.returned_at ;;
   }
+
+  dimension: returned_month_pro {
+    type: string
+    #sql: ${returned_date} ;;
+    sql: SUBSTRING(CONCAT(SUBSTRING(${returned_month},6,7),"-",SUBSTRING(${returned_month},3,4)),1,5) ;;
+    #html: {{ rendered_value | date: "%b-%y" }} ;;
+  }
+
   dimension: sale_price {
     type: number
     sql: round(${TABLE}.sale_price) ;;
