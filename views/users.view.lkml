@@ -64,7 +64,12 @@ view: users {
   }
   measure: count {
     type: count
-    drill_fields: [detail*]
+    #drill_fields: [detail*]
+    drill_fields: [first_name, last_name]
+    link: {
+      label: "chalega"
+      url: "{{link}}&country=USA"
+    }
   }
 
   # ----- Sets of fields for drilling ------
