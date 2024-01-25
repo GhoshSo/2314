@@ -2,6 +2,22 @@ view: orders {
   sql_table_name: demo_db.orders ;;
   drill_fields: [id]
 
+  parameter: number_of_results {
+    type: string
+    allowed_value: {
+      label: "Less than 500"
+      value: "< 500"
+    }
+    allowed_value: {
+      label: "Less than 10,000"
+      value: "< 10000"
+    }
+    allowed_value: {
+      label: "All Results"
+      value: "> 0"
+    }
+  }
+
   dimension: id {
     primary_key: yes
     type: number

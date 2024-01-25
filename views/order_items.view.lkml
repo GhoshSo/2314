@@ -1,4 +1,6 @@
+include: "/views/orders.view.lkml"
 view: order_items {
+  extends: [orders]
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
@@ -57,6 +59,11 @@ view: order_items {
     type: number
     sql: round(${TABLE}.sale_price) ;;
   }
+  measure: avg_sp {
+    type: average
+    sql: ${sale_price} ;;
+    value_format: "$#.00;($#.00)"
+  }
   measure: total_sp {
     type: number
     sql: SUM(${sale_price}) ;;
@@ -66,6 +73,7 @@ view: order_items {
        url: " {% assign vis_config = '{\"type\":\"single_value\"}' %}
        {{ count._link }}&vis_config={{ vis_config | encode_uri }}&&toggle=vis"
      }
+    value_format: "$#.00;($#.00)"
   }
   measure: count {
     type: count
