@@ -53,6 +53,14 @@ view: orders {
     # hidden: yes
     sql: ${TABLE}.user_id ;;
   }
+  dimension: now {
+    type: date_time
+    sql: NOW() ;;
+  }
+  measure: sum_id {
+    type: number
+    sql: SUM(${user_id}) ;;
+  }
   measure: count {
     type: count
     drill_fields: [detail*]

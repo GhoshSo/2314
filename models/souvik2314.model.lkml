@@ -223,7 +223,14 @@ explore: test {}
 
 explore: test_space_in_column_name {}
 
-explore: users {}
+explore: users {
+  join: order_items {
+    type: left_outer
+    sql_on: ${order_items.inventory_item_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+
+}
 
 explore: user_data {
   join: users {

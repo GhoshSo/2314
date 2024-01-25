@@ -9,13 +9,13 @@ view: users {
   }
   parameter: anything {
     type: unquoted
-    suggest_dimension: state
+    suggest_dimension: city
     suggest_explore: users
   }
   dimension: dynamic {
     type: string
-    sql: {% if anything._parameter_value == "" %} ${city}
-      {% else %} ${country}
+    sql: {% if anything._parameter_value != "" %} ${state}
+      {% else %} ""
       {% endif %};;
   }
 
