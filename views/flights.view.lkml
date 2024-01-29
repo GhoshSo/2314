@@ -20,6 +20,14 @@ view: flights {
     sql: ${TABLE}.cancelled ;;
   }
 
+  # dimension: carrier {
+  #   type: string
+  #   sql: ${TABLE}.carrier ;;
+  # }
+  # dimension: dep_delay {
+  #   type: number
+  #   sql: ${TABLE}.dep_delay ;;
+  # }
   dimension: carrier {
     type: string
     sql: ${TABLE}.carrier ;;
