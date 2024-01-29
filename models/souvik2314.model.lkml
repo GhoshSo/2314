@@ -12,6 +12,12 @@ datagroup: souvik2314_default_datagroup {
 
 persist_with: souvik2314_default_datagroup
 
+access_grant: test{
+  user_attribute:   ua_souvik
+  allowed_values: [ "lord shaswath " ]
+}
+
+
 explore: billion_orders {
   join: orders {
     type: left_outer

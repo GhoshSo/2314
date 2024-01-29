@@ -11,6 +11,7 @@ view: order_items {
     type: number
     # hidden: yes
     sql: ${TABLE}.inventory_item_id ;;
+    required_access_grants: [test]
   }
   dimension: order_id {
     type: number
@@ -35,14 +36,11 @@ view: order_items {
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
-  }
-  measure: sp {
-    type: number
-    sql: ${sale_price} ;;
+
   }
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
-  }
 
-}
+  }
+  }

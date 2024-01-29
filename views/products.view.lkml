@@ -27,10 +27,10 @@ view: products {
     type: number
     sql: ${TABLE}.rank ;;
   }
-  dimension: retail_price {
-    type: number
-    sql: ${TABLE}.retail_price ;;
-  }
+ # dimension: retail_price {
+  #  type: number
+   # sql: ${TABLE}.retail_price ;;
+  #}
   dimension: sku {
     type: string
     sql: ${TABLE}.sku ;;
@@ -38,5 +38,26 @@ view: products {
   measure: count {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
+  }
+  dimension: retail_price {
+    type: number
+    sql: ${TABLE}.id ;;
+  }
+
+  measure: sales_per_person{
+    type: number
+    sql: ${retail_price} ;;
+  }
+  measure: test4 {
+    type:sum
+    sql:  ${retail_price} ;;
+  }
+  measure: average_sales_per_person_2{
+    type: number
+    sql:  ${retail_price}/${test4} ;;
+  }
+  measure: average_sales_per_person{
+    type: number
+    sql:  (${retail_price}/6033)*10000 ;;
   }
 }

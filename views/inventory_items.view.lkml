@@ -29,5 +29,6 @@ view: inventory_items {
   measure: count {
     type: count
     drill_fields: [id, products.id, products.item_name, order_items.count, order_items_vijaya.count]
+    link: {label: "Drill" url:"{{ count._link }}&f[inventory_items.id]=97293  &sorts=inventory_items.count+desc+0&limit=500" }
   }
 }

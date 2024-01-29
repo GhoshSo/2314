@@ -12,6 +12,7 @@ view: users {
     sql: ${TABLE}.age ;;
   }
   dimension: city {
+   # primary_key: yes
     type: string
     sql: ${TABLE}.city ;;
     drill_fields: [state, city]
