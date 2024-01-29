@@ -10,10 +10,16 @@ view: flights {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.arr_time ;;
   }
+  # dimension: cancelled {
+  #   type: string
+  #   sql: ${TABLE}.cancelled ;;
+  # }
+
   dimension: cancelled {
     type: string
     sql: ${TABLE}.cancelled ;;
   }
+
   dimension: carrier {
     type: string
     sql: ${TABLE}.carrier ;;
