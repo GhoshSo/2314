@@ -22,7 +22,7 @@ view: order_items {
     }
   }
 
-  #### Test RUN
+
   dimension: inventory_item_id {
     type: number
     # hidden: yes
