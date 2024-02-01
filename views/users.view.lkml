@@ -19,21 +19,25 @@ view: users {
       {% endif %};;
   }
 
-  dimension: city {
+  dimension: city{
+    label: "city and the other thing just to make it long enough because...."
     type: string
     sql: ${TABLE}.city ;;
     drill_fields: [state, city]
     }
   dimension: country {
+    label: "country and the other thing just to make it long enough because"
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
   }
   dimension: age {
+    label: "AGE is just a number but I'm not sure how to enlarge it as I'm out of word"
     type: number
     sql: ${TABLE}.age ;;
   }
   dimension_group: created {
+    label: "I'm not sure who created the world but this dimension group is created by me"
     type: time
     #timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
