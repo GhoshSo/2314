@@ -22,6 +22,22 @@ view: order_items {
     }
   }
 
+  parameter: exclude_royalties {
+    view_label: " Revenue metrics"
+    type: number
+    default_value: "1"
+    description: "Filter to include/exclude royalties, default is NO"
+    label: "Exclude royalties?"
+    allowed_value: {
+      label: "Include royalties"
+      value: "1"
+    }
+    allowed_value: {
+      label: "Exclude royalties"
+      value: "0"
+    }
+  }
+
 
   dimension: inventory_item_id {
     type: number
