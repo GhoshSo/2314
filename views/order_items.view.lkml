@@ -23,7 +23,7 @@ view: order_items {
   }
 
   parameter: exclude_royalties {
-    view_label: " Revenue metrics"
+    #view_label: " Revenue metrics"
     type: number
     default_value: "1"
     description: "Filter to include/exclude royalties, default is NO"
