@@ -22,6 +22,8 @@ view: order_items {
     }
   }
 
+  #### THIS LINE IS ADDED BY SOUVIK IN ORDER_ITEMS LINE 25
+
   parameter: exclude_royalties {
     #view_label: " Revenue metrics"
     type: number
