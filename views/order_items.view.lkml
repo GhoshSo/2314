@@ -82,7 +82,7 @@ view: order_items {
     sql: SUBSTRING(CONCAT(SUBSTRING(${returned_month},6,7),"-",SUBSTRING(${returned_month},3,4)),1,5) ;;
     #html: {{ rendered_value | date: "%b-%y" }} ;;
   }
-
+### This line is added by souvik in order_items view, line 85
   dimension: sale_price {
     type: number
     sql: round(${TABLE}.sale_price) ;;
