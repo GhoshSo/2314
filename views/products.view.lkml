@@ -45,7 +45,7 @@ view: products {
   }
   measure: test_alert{
     type: number
-    sql: ${count}*109.5 ;;
+    sql: ${count}*199.5 ;;
     value_format:  "0.00\%"
   }
 }
