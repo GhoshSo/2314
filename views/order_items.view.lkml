@@ -22,6 +22,24 @@ view: order_items {
     }
   }
 
+  #### THIS LINE IS ADDED BY SOUVIK IN ORDER_ITEMS LINE 25
+
+  parameter: exclude_royalties {
+    #view_label: " Revenue metrics"
+    type: number
+    default_value: "1"
+    description: "Filter to include/exclude royalties, default is NO"
+    label: "Exclude royalties?"
+    allowed_value: {
+      label: "Include royalties"
+      value: "1"
+    }
+    allowed_value: {
+      label: "Exclude royalties"
+      value: "0"
+    }
+  }
+
 
   dimension: inventory_item_id {
     type: number
@@ -64,7 +82,7 @@ view: order_items {
     sql: SUBSTRING(CONCAT(SUBSTRING(${returned_month},6,7),"-",SUBSTRING(${returned_month},3,4)),1,5) ;;
     #html: {{ rendered_value | date: "%b-%y" }} ;;
   }
-
+### This line is added by souvik in order_items view, line 85
   dimension: sale_price {
     type: number
     sql: round(${TABLE}.sale_price) ;;
