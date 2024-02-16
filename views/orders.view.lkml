@@ -22,6 +22,12 @@ view: orders {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    html:
+    {{id._rendered_value}} <br>
+    {{status._rendered_value}} ({{sum_id._rendered_value}}) <br/>
+    {{count._rendered_value}} * {{count._rendered_value}} *
+    {{count._rendered_value}}
+    = {{rendered_value}};;
   }
   dimension_group: created {
     type: time

@@ -43,4 +43,8 @@ view: products {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
   }
+  measure: test_alert{
+    type: number
+    sql: ${count}*108.5 ;;
+  }
 }

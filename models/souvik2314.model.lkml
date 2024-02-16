@@ -105,6 +105,22 @@ explore: inventory_items {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
+  join: order_items {
+    type: left_outer
+    sql_on: ${inventory_items.id}=${order_items.inventory_item_id} ;;
+   relationship: many_to_one
+  }
+  join: users {
+    type: left_outer
+    sql_on: ${inventory_items.id} =${users.id} ;;
+    relationship: many_to_one
+  }
+  join: order_items_vijaya {
+    type: left_outer
+    sql_on:  ${inventory_items.id}= ${order_items_vijaya.order_id} ;;
+    relationship: many_to_one
+  }
+
 }
 
 explore: orders {
@@ -148,6 +164,11 @@ explore: order_items_vijaya {
     relationship: many_to_one
   }
 
+  join: order_items {
+    type: left_outer
+    sql_on: ${order_items.inventory_item_id}=${order_items_vijaya.order_id};;
+    relationship: many_to_one
+    }
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items_vijaya.inventory_item_id} = ${inventory_items.id} ;;
