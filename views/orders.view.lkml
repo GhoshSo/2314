@@ -18,6 +18,8 @@ view: orders {
     }
   }
 
+  #### This line is added by souvik
+
   dimension: id {
     primary_key: yes
     type: number
