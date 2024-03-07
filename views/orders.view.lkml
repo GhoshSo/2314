@@ -42,7 +42,7 @@ view: orders {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
-    suggest_dimension: user_id
+    suggest_dimension: status_gen
     suggest_explore: orders
   }
   dimension: status_charindex {
