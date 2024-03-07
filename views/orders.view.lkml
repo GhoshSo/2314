@@ -45,6 +45,10 @@ view: orders {
     suggest_dimension: status_gen
     suggest_explore: orders
   }
+
+  filter: test{
+    sql: ${status} ;;
+  }
   dimension: status_charindex {
     type: number
     sql: POSITION('e'IN ${status}) ;;
