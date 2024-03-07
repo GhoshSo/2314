@@ -47,6 +47,7 @@ view: orders {
   }
 
   filter: test{
+    type: string
     sql: ${status} ;;
   }
   dimension: status_charindex {
