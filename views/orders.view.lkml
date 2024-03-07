@@ -42,13 +42,14 @@ view: orders {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
-    suggest_dimension: status_gen
-    suggest_explore: orders
+
   }
 
   filter: test{
     type: string
     sql: ${status} ;;
+    suggest_dimension: status_gen
+    suggest_explore: orders
   }
   dimension: status_charindex {
     type: number
