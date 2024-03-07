@@ -22,7 +22,6 @@ view: order_items {
     }
   }
 
-  #### THIS LINE IS ADDED BY SOUVIK IN ORDER_ITEMS LINE 25
 
   parameter: exclude_royalties {
     #view_label: " Revenue metrics"
@@ -69,7 +68,7 @@ view: order_items {
       {% endif %};;
   }
 
-
+#### This Line is added by Souvik, Order_Items
   dimension_group: returned {
     type: time
     timeframes: [raw, time, date, week, week_of_year, month, quarter, year,month_name]
