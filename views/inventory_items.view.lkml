@@ -34,4 +34,8 @@ view: inventory_items {
     type: number
     sql: ${order_items.sale_price}  ;;
   }
+  dimension: test_souvik {
+    type: number
+    sql: 100 ;;
+  }
 }
