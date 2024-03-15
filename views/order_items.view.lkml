@@ -21,6 +21,9 @@ view: order_items {
       label: "$%^"
     }
   }
+  dimension: test56 {
+
+  }
 
 
   parameter: exclude_royalties {
