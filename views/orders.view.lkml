@@ -93,5 +93,8 @@ view: orders {
   ten_million_orders.count
   ]
   }
-
+dimension: test798 {
+  type: number
+  sql: 1 ;;
+}
 }
