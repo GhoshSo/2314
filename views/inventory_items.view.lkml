@@ -38,4 +38,8 @@ view: inventory_items {
     type: number
     sql: 100 ;;
   }
+  dimension: test456 {
+
+    type: number
+  }
 }

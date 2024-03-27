@@ -45,6 +45,7 @@ view: order_items {
   dimension: test878558 {
 
     type: number
+
   }
 
 
