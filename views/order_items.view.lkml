@@ -125,5 +125,8 @@ view: order_items {
     type: number
     sql: COUNT( DISTINCT(${order_id})) ;;
   }
+  measure: vivh {
+    type: count
+  }
 
 }
