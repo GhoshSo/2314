@@ -1,5 +1,7 @@
 connection: "thelook"
 
+include: "/Dashboards/sales_dashboard.dashboard.lookml"
+
 # include all the views
 include: "/views/**/*.view.lkml"
 
@@ -25,6 +27,8 @@ explore: billion_orders {
 }
 
 ###TheBBCD
+
+explore: derived_order_items_temp_check {}
 
 explore: connection_reg_r3 {}
 
@@ -55,6 +59,9 @@ explore: fakeorders {
     relationship: many_to_one
   }
 }
+
+
+
 
 explore: fatal_error_user_derived_base {}
 
@@ -104,6 +111,22 @@ explore: inventory_items {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
+  join: order_items {
+    type: left_outer
+    sql_on: ${inventory_items.id}=${order_items.inventory_item_id} ;;
+   relationship: many_to_one
+  }
+  join: users {
+    type: left_outer
+    sql_on: ${inventory_items.id} =${users.id} ;;
+    relationship: many_to_one
+  }
+  join: order_items_vijaya {
+    type: left_outer
+    sql_on:  ${inventory_items.id}= ${order_items_vijaya.order_id} ;;
+    relationship: many_to_one
+  }
+
 }
 
 explore: orders {
@@ -147,6 +170,11 @@ explore: order_items_vijaya {
     relationship: many_to_one
   }
 
+  join: order_items {
+    type: left_outer
+    sql_on: ${order_items.inventory_item_id}=${order_items_vijaya.order_id};;
+    relationship: many_to_one
+    }
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items_vijaya.inventory_item_id} = ${inventory_items.id} ;;
@@ -222,7 +250,14 @@ explore: test {}
 
 explore: test_space_in_column_name {}
 
-explore: users {}
+explore: users {
+  join: order_items {
+    type: left_outer
+    sql_on: ${order_items.inventory_item_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+
+}
 
 explore: user_data {
   join: users {

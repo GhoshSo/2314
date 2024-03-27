@@ -45,4 +45,16 @@ view: inventory_items {
     ;;
     drill_fields: [id, products.id, products.item_name, order_items.count, order_items_vijaya.count]
   }
+  dimension: sale_price_testt {
+    type: number
+    sql: ${order_items.sale_price}  ;;
+  }
+  dimension: test_souvik {
+    type: number
+    sql: 100 ;;
+  }
+  dimension: test456 {
+
+    type: number
+  }
 }
