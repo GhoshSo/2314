@@ -95,6 +95,10 @@ explore: incremental_pdts_test {}
 explore: ints {}
 
 explore: inventory_items {
+ # always_filter: {
+  #  filters: [inventory_items.created_date: "Today"]
+  #  }
+    sql_always_where: ${created_date}='Today' ;;
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;

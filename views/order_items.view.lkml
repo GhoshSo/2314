@@ -32,6 +32,10 @@ view: order_items {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.returned_at ;;
   }
+  dimension: date {
+    type: string
+    sql:"shashikant" ;;
+    }
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
@@ -41,6 +45,7 @@ view: order_items {
     sql: ${sale_price} ;;
   }
   measure: count {
+    description: "{{order_items.date._value}}"
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
   }
