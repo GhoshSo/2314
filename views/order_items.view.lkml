@@ -42,6 +42,11 @@ view: order_items {
     }
   }
 
+  dimension: test878558 {
+
+    type: number
+  }
+
 
   dimension: inventory_item_id {
     type: number
