@@ -19,21 +19,29 @@ view: derived_order_items_temp_check {
       LEFT JOIN demo_db.users  AS users ON orders.user_id = users.id
       LEFT JOIN demo_db.products  AS products ON inventory_items.product_id = products.id
       WHERE {% condition user_state %} users.state {% endcondition %}
+      AND
+      (DATE(orders.created_at )) >= timestamp({% date_start transaction_period %}) and (DATE(orders.created_at )) < timestamp({% date_end transaction_period %})
       GROUP BY
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10
+          1, 2,3,4,5,6,7,8,9,10
       ORDER BY
           1 DESC
       LIMIT 500 ;;
     # datagroup_trigger: souvik2314_default_datagroup
+  }
+
+
+  filter: transaction_period {
+    type: date
+    description: "dates between which to search for transactions"
+    label: "Transaction Search Period"
+  }
+
+  dimension: date_start_value {
+    sql:   {% date_start transaction_period %};;
+  }
+
+  dimension: date_end_value {
+    sql: {% date_end transaction_period %} ;;
   }
 
   filter: user_state {
