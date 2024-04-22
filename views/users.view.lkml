@@ -66,6 +66,14 @@ view: users {
     type: zipcode
     sql: ${TABLE}.zip ;;
   }
+  measure: sum_id {
+    type: sum
+    sql: ${id} ;;
+  }
+  measure: sum_age {
+    type: sum
+    sql: ${age} ;;
+  }
   measure: count {
     type: count
     #drill_fields: [detail*]
