@@ -86,7 +86,7 @@ view: order_items {
 
   dimension: formatted_returned {
     type: string
-    sql: CONCAT(${returned_date},"T",SUBSTR(${returned_raw},12,12),".000") ;;
+    sql: CONCAT(${returned_date}," T",SUBSTR(${returned_raw},12,12),".000") ;;
   }
 
   dimension: date {
