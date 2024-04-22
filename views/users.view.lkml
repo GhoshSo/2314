@@ -19,6 +19,12 @@ view: users {
       {% endif %};;
   }
 
+  measure: med_dest {
+    type: median_distinct
+    sql_distinct_key: ${first_name} ;;
+    sql: ${age} ;;
+  }
+
   dimension: city{
     label: "city and the other thing just to make it long enough because...."
     type: string
