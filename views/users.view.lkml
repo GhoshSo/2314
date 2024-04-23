@@ -20,7 +20,8 @@ view: users {
   }
 
   measure: med_dest {
-    type: median_distinct
+    type: percentile_distinct
+    percentile: 75
     sql_distinct_key: ${first_name} ;;
     sql: ${age} ;;
   }
@@ -74,10 +75,12 @@ view: users {
   }
   measure: sum_id {
     type: sum
+    value_format_name: decimal_2
     sql: ${id} ;;
   }
   measure: sum_age {
     type: sum
+    value_format_name: decimal_2
     sql: ${age} ;;
   }
   measure: count {
