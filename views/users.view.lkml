@@ -19,6 +19,13 @@ view: users {
       {% endif %};;
   }
 
+  measure: med_dest {
+    type: percentile_distinct
+    percentile: 75
+    sql_distinct_key: ${first_name} ;;
+    sql: ${age} ;;
+  }
+
   dimension: city{
     #label: "city and the other thing just to make it long enough because...."
     type: string
@@ -65,6 +72,16 @@ view: users {
   dimension: zip {
     type: zipcode
     sql: ${TABLE}.zip ;;
+  }
+  measure: sum_id {
+    type: sum
+    value_format_name: decimal_2
+    sql: ${id} ;;
+  }
+  measure: sum_age {
+    type: sum
+    value_format_name: decimal_2
+    sql: ${age} ;;
   }
   measure: count {
     type: count

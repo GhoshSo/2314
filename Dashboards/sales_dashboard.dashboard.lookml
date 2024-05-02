@@ -1,7 +1,9 @@
+---
 - dashboard: ecommerce_sales_dashboard
   title: E-Commerce Sales Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
+  crossfilter_enabled: true
   description: ''
   preferred_slug: 4vKXJ4C7NFE9eqLIhCw1wv
   elements:
@@ -11,8 +13,7 @@
     explore: order_items
     type: single_value
     fields: [users.count]
-    filters:
-      orders.created_date: 180 days
+    filters: {}
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -44,19 +45,24 @@
           palette_id: 85de97da-2ded-4dec-9dbd-e6a7d36d5825}, bold: false, italic: false,
         strikethrough: false, fields: !!null ''}]
     defaults_version: 1
-    listen: {}
+    y_axes: []
+    note_state: collapsed
+    note_display: hover
+    note_text: NOT OVERLAPPING
+    listen:
+      Created Date: orders.created_date
+      Status Gen: orders.status_gen
     row: 0
     col: 0
-    width: 8
-    height: 4
+    width: 4
+    height: 5
   - title: Average Sale Price
     name: Average Sale Price
     model: souvik2314
     explore: order_items
     type: single_value
     fields: [order_items.avg_sp]
-    filters:
-      orders.created_date: 6 months
+    filters: {}
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -90,11 +96,17 @@
     single_value_title: ''
     defaults_version: 1
     hidden_pivots: {}
-    listen: {}
+    y_axes: []
+    note_state: collapsed
+    note_display: hover
+    note_text: NOT OVERLAPPING
+    listen:
+      Created Date: orders.created_date
+      Status Gen: orders.status_gen
     row: 0
-    col: 8
-    width: 8
-    height: 4
+    col: 10
+    width: 4
+    height: 5
   - title: This Year Total Sale
     name: This Year Total Sale
     model: souvik2314
@@ -139,11 +151,17 @@
     comparison_label: Vs. Last Year
     defaults_version: 1
     hidden_pivots: {}
-    listen: {}
+    y_axes: []
+    note_state: collapsed
+    note_display: hover
+    note_text: NOT OVERLAPPING...!!
+    listen:
+      Created Date: orders.created_date
+      Status Gen: orders.status_gen
     row: 0
-    col: 16
-    width: 8
-    height: 4
+    col: 20
+    width: 4
+    height: 5
   - title: Monthly Trend of Users
     name: Monthly Trend of Users
     model: souvik2314
@@ -236,11 +254,17 @@
     hidden_pivots:
       '2019':
         is_entire_pivot_hidden: true
-    listen: {}
-    row: 4
+    y_axes: []
+    note_state: collapsed
+    note_display: hover
+    note_text: OVERLAPPING...!!!!!!!!!!!!!
+    listen:
+      Created Date: orders.created_date
+      Status Gen: orders.status_gen
+    row: 5
     col: 0
     width: 12
-    height: 9
+    height: 8
   - title: Category of Product sold in Each month
     name: Category of Product sold in Each month
     model: souvik2314
@@ -337,8 +361,42 @@
     single_value_title: This Year Total Sale
     defaults_version: 1
     hidden_pivots: {}
-    listen: {}
-    row: 4
-    col: 12
-    width: 12
-    height: 9
+    y_axes: []
+    note_state: collapsed
+    note_display: hover
+    note_text: OVERLAPPING AGAIN...!!!
+    listen:
+      Created Date: orders.created_date
+      Status Gen: orders.status_gen
+    row: 5
+    col: 13
+    width: 11
+    height: 8
+  filters:
+  - name: Created Date
+    title: Created Date
+    type: field_filter
+    default_value: 2020/06/03 to 2024/04/24
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: relative_timeframes
+      display: inline
+      options: []
+    model: souvik2314
+    explore: order_items
+    listens_to_filters: []
+    field: orders.created_date
+  - name: Status Gen
+    title: Status Gen
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    model: souvik2314
+    explore: order_items
+    listens_to_filters: []
+    field: orders.status_gen

@@ -23,12 +23,7 @@ view: orders {
          {% endif %} ;;
   }
 
-  dimension: id {
-    primary_key: yes
-    type: number
-    sql: ${TABLE}.id ;;
 
-  }
 
   measure: id_test {
     type: number
@@ -47,10 +42,26 @@ view: orders {
     type:  string
     sql: DATE(MAX(${created_raw})) ;;
   }
+  dimension: id {
+    primary_key: yes
+    type: number
+    sql: ${TABLE}.id ;;
+  }
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+    drill_fields: [id,user_id,users.first_name,users.last_name,count]
  }
+  measure: count {
+    type: count
+    #drill_fields: [detail*]
+  }
+
+  dimension: user_id {
+    type: number
+    # hidden: yes
+    sql: ${TABLE}.user_id ;;
+  }
 
   dimension: status_gen {
     type: string
@@ -68,11 +79,6 @@ view: orders {
     sql: POSITION('e'IN ${status}) ;;
   }
 
-  dimension: user_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}.user_id ;;
-  }
   dimension: now {
     type: date_time
     sql: NOW() ;;
@@ -81,10 +87,10 @@ view: orders {
     type: number
     sql: SUM(${user_id}) ;;
   }
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
+  # measure: count {
+  #   type: count
+  #   drill_fields: [detail*]
+  # }
 
 
 
