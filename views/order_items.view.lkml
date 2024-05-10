@@ -82,13 +82,24 @@ view: order_items {
     type: time
     timeframes: [raw, time, date, week, week_of_year, month, quarter, year,month_name]
     sql: ${TABLE}.returned_at ;;
+    html: {{ rendered_value | date: "%Y-%d-%m"}} ;;
   }
 
-  dimension: date {
-    type: string
-    sql:"shashikant" ;;
+  dimension: returned_form_date {
+    type: date
+    sql: ${returned_date} ;;
+    # html: {{ rendered_value | date: "%d-%m-%Y"}} ;;
+    html: {% if _user_attributes['crypto_beamers'] == 'Yes' %}
+          {{ rendered_value | date: "%d-%m-%Y"}}
+          {% else %}
+          {{ rendered_value | date: "%Y-%Y-%Y"}}
+          {% endif %}  ;;
     }
 
+  dimension: formatted_returned {
+    type: string
+    sql: CONCAT(${returned_date}," T",SUBSTR(${returned_raw},12,12),".000") ;;
+  }
 
   dimension: returned_month_pro {
     type: string
