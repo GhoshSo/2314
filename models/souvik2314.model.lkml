@@ -143,9 +143,9 @@ explore: order_items {
     sql_on: ${order_items.order_id} = ${orders.id} ;;
     relationship: many_to_one
   }
-  always_filter: {
-    filters: [orders.status: "PENDING"]
-  }
+  # always_filter: {
+  #   filters: [orders.status: "PENDING"]
+  # }
 
   join: inventory_items {
     type: left_outer
