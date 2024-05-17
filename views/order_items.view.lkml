@@ -82,7 +82,7 @@ view: order_items {
     type: time
     timeframes: [raw, time, date, week, week_of_year, month, quarter, year,month_name]
     sql: ${TABLE}.returned_at ;;
-    html: {{ rendered_value | date: "%Y-%d-%m"}} ;;
+    #html: {{ rendered_value | date: "%Y-%d-%m"}} ;;
   }
 
   dimension: returned_form_date {
@@ -111,13 +111,25 @@ view: order_items {
 
   dimension: sale_price {
     type: number
-    sql: round(${TABLE}.sale_price) ;;
+    sql: ${TABLE}.sale_price ;;
+  }
+  dimension: new_SP {
+    type: number
+    sql: ${sale_price}*1000000000000;;
+  }
+  measure: sdsp {
+    label: "Sum Distict of New SP"
+    type: sum_distinct
+    sql: ${new_SP} ;;
+    precision: 5
+    value_format: "$0"
   }
   measure: avg_sp {
     type: average
     sql: ${sale_price} ;;
     value_format: "$#.00;($#.00)"
   }
+
   measure: total_sp {
     type: number
     sql: SUM(${sale_price}) ;;
