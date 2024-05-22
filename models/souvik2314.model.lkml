@@ -1,6 +1,6 @@
 connection: "thelook"
 
-include: "/Dashboards/sales_dashboard.dashboard.lookml"
+include: "/Dashboards/filter_issue.dashboard.lookml"
 
 # include all the views
 include: "/views/**/*.view.lkml"
