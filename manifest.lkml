@@ -1,1 +1,1 @@
-new_lookml_runtime: no
+new_lookml_runtime: yes

@@ -41,6 +41,7 @@ view: users {
     type: time
     #timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
+
   }
   dimension: email {
     type: string
@@ -66,16 +67,32 @@ view: users {
     type: zipcode
     sql: ${TABLE}.zip ;;
   }
+  measure: lastest_response_date {
+    group_label: "card_responses.response"
+    label: "card_responses.lastest_response_date"
+    type: date
+    sql: max(${created_raw}) ;;
+    html: {{ rendered_value | date: "%m/%d/%Y %r" }};;
+  }
+  measure: lastest_response_date_time {
+    label: "card_responses.lastest_response_date_time"
+    type: number
+    sql: ${lastest_response_date} ;;
+    html: <span style="color: black">{{ rendered_value | date: "%m/%d/%Y %r" }}</span>;;
+  }
+
   measure: count {
     type: count
     #drill_fields: [detail*]
-    drill_fields: [first_name, last_name]
-    link: {
-      label: "chalega"
-      url: "{{link}}&country=USA"
-    }
+    drill_fields: [first_name, last_name,lastest_response_date_time]
+    # link: {
+    #   label: "chalega"
+    #   url: "{{link}}&country=USA"
+    # }
   }
-
+  # dimension: det {
+  #   sql:${orders.user_id} ;;
+  # }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

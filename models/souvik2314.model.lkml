@@ -251,6 +251,11 @@ explore: test {}
 explore: test_space_in_column_name {}
 
 explore: users {
+  join: orders {
+    sql_on: ${orders.id}=${users.id} ;;
+    type: left_outer
+    relationship: many_to_many
+  }
   join: order_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${users.id} ;;
