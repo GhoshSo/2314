@@ -1,29 +1,11 @@
 include: "/views/orders.view.lkml"
 view: order_items {
+
   extends: [orders]
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
-  dimension: id {
-    primary_key: yes
-    type: number
-    sql: ${TABLE}.id ;;
-  }
-  parameter: ABC {
-    label: "DEF"
-    type: unquoted
-    allowed_value: {
-      value: "123"
-      label: "!@#"
-    }
-    allowed_value: {
-      value: "456"
-      label: "$%^"
-    }
-  }
-  dimension: test56 {
 
-  }
 
 
   parameter: exclude_royalties {
@@ -68,45 +50,50 @@ view: order_items {
     sql: ${TABLE}.phones ;;
   }
 
-  measure: dynamic_measure {
-    #label_from_parameter: measure_selector
-    type: number
-    sql:
-      {% if ABC._parameter_value == 123 %} ${count}
-      {% else %} ${total_sp}
-      {% endif %};;
-  }
 
-#### This Line is added by Souvik, Order_Items
+
+
   dimension_group: returned {
     type: time
     timeframes: [raw, time, date, week, week_of_year, month, quarter, year,month_name]
     sql: ${TABLE}.returned_at ;;
+    #html: {{ rendered_value | date: "%Y-%d-%m"}} ;;
   }
 
-  dimension: date {
-    type: string
-    sql:"shashikant" ;;
+  dimension: returned_form_date {
+    type: date
+    sql: ${returned_date} ;;
+
     }
 
-
-  dimension: returned_month_pro {
+  dimension: formatted_returned {
     type: string
-    #sql: ${returned_date} ;;
-    sql: SUBSTRING(CONCAT(SUBSTRING(${returned_month},6,7),"-",SUBSTRING(${returned_month},3,4)),1,5) ;;
-    #html: {{ rendered_value | date: "%b-%y" }} ;;
+    sql: CONCAT(${returned_date}," T",SUBSTR(${returned_raw},12,12),".000") ;;
   }
-### This line is added by souvik in order_items view, line 85
+
+
 
   dimension: sale_price {
     type: number
-    sql: round(${TABLE}.sale_price) ;;
+    sql: ${TABLE}.sale_price ;;
+  }
+  dimension: new_SP {
+    type: number
+    sql: ${sale_price}*1000000000000;;
+  }
+  measure: sdsp {
+    label: "Sum Distict of New SP"
+    type: sum_distinct
+    sql: ${new_SP} ;;
+    precision: 5
+    value_format: "$0"
   }
   measure: avg_sp {
     type: average
     sql: ${sale_price} ;;
     value_format: "$#.00;($#.00)"
   }
+
   measure: total_sp {
     type: number
     sql: SUM(${sale_price}) ;;
@@ -124,17 +111,8 @@ view: order_items {
     drill_fields: [id, orders.id, inventory_items.id]
   }
 
-  measure: div {
-    type: number
-    sql: ${total_sp}/${count_dis} ;;
-  }
 
-  measure: count_dis {
-    type: number
-    sql: COUNT( DISTINCT(${order_id})) ;;
-  }
-  measure: vivh {
-    type: count
-  }
+
+
 
 }

@@ -1,6 +1,6 @@
 connection: "thelook"
 
-include: "/Dashboards/sales_dashboard.dashboard.lookml"
+
 
 # include all the views
 include: "/views/**/*.view.lkml"
@@ -143,6 +143,9 @@ explore: order_items {
     sql_on: ${order_items.order_id} = ${orders.id} ;;
     relationship: many_to_one
   }
+  # always_filter: {
+  #   filters: [orders.status: "PENDING"]
+  # }
 
   join: inventory_items {
     type: left_outer
@@ -150,11 +153,11 @@ explore: order_items {
     relationship: many_to_one
   }
 
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
+  # join: users {
+  #   type: left_outer
+  #   sql_on: ${orders.user_id} = ${users.id} ;;
+  #   relationship: many_to_one
+  # }
 
   join: products {
     type: left_outer
@@ -181,11 +184,11 @@ explore: order_items_vijaya {
     relationship: many_to_one
   }
 
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
+  # join: users {
+  #   type: left_outer
+  #   sql_on: ${orders.user_id} = ${users.id} ;;
+  #   relationship: many_to_one
+  # }
 
   join: products {
     type: left_outer
@@ -215,21 +218,21 @@ explore: salary {
 }
 
 explore: saralooker {
-  join: users {
-    type: left_outer
-    sql_on: ${saralooker.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
+  # join: users {
+  #   type: left_outer
+  #   sql_on: ${saralooker.user_id} = ${users.id} ;;
+  #   relationship: many_to_one
+  # }
 }
 
 explore: schema_migrations {}
 
 explore: sindhu {
-  join: users {
-    type: left_outer
-    sql_on: ${sindhu.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
+  # join: users {
+  #   type: left_outer
+  #   sql_on: ${sindhu.user_id} = ${users.id} ;;
+  #   relationship: many_to_one
+  # }
 }
 
 explore: ten_million_orders {
@@ -239,11 +242,11 @@ explore: ten_million_orders {
     relationship: many_to_one
   }
 
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
+  # join: users {
+  #   type: left_outer
+  #   sql_on: ${orders.user_id} = ${users.id} ;;
+  #   relationship: many_to_one
+  # }
 }
 
 explore: test {}

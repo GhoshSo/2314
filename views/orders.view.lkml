@@ -14,14 +14,14 @@ view: orders {
     }
   }
 
-  dimension: variable_dim {
-    type: string
-    sql: {% if status_dim_selector._parameter_value == "statusgen" %}
-               ${status_gen}
-         {% elsif status_dim_selector._parameter_value == "status" %}
-               ${status}
-         {% endif %} ;;
-  }
+  # dimension: variable_dim {
+  #   type: string
+  #   sql: {% if status_dim_selector._parameter_value == "statusgen" %}
+  #             ${status_gen}
+  #       {% elsif status_dim_selector._parameter_value == "status" %}
+  #             ${status}
+  #       {% endif %} ;;
+  # }
 
 
 
@@ -51,11 +51,50 @@ view: orders {
     type: string
     sql: ${TABLE}.status ;;
     drill_fields: [id,user_id,users.first_name,users.last_name,count]
+    link: {
+      label: "dashboard"
+      url: "https://gcpl246.cloud.looker.com/dashboards/28"
+    }
+
+    link: {
+      label: "dashbaord"
+      url: "https://gcpl246.cloud.looker.com/dashboards/62"
+    }
  }
   measure: count {
     type: count
     #drill_fields: [detail*]
   }
+
+  # dimension: action_test {
+  #   sql: ${status} ;;
+  #   action:  {
+  #     label: "Label to Appear in Action Menu"
+  #     url: "https://example.com/posts"
+  #     icon_url: "https://looker.com/favicon.ico"
+  #     form_url: "https://example.com/ping/{{ value }}/form.json"
+  #     param: {
+  #       name: "name string"
+  #       value: "value string"
+  #     }
+  #     form_param: {
+  #       name:  "name string"
+  #       type:string
+  #       label:  "possibly-localized-string"
+  #       option: {
+  #         name:  "name string"
+  #         label:  "possibly-localized-string"
+  #       }
+  #       required:  yes
+  #       description:  "possibly-localized-string"
+  #       default:  "string"
+  #     }
+  #     user_attribute_param: {
+  #       user_attribute: locale
+  #       name: "name_for_json_payload"
+  #     }
+  #   }
+  # }
 
   dimension: user_id {
     type: number
@@ -63,17 +102,17 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
-  dimension: status_gen {
-    type: string
-    sql: concat(${status}, " ",${users.gender}) ;;
-  }
+  # dimension: status_gen {
+  #   type: string
+  #   sql: concat(${status}, " ",${users.gender}) ;;
+  # }
 
-  filter: test{
-    type: string
-    sql: ${status} ;;
-    suggest_dimension: status_gen
-    suggest_explore: orders
-  }
+  # filter: test{
+  #   type: string
+  #   sql: ${status} ;;
+  #   suggest_dimension: status_gen
+  #   suggest_explore: orders
+  # }
   dimension: status_charindex {
     type: number
     sql: POSITION('e'IN ${status}) ;;

@@ -1,0 +1,83 @@
+{
+"shift_name": "Schicht",
+
+"cost_productive": "Personalkosten Produktiv",
+"cost_total": "Personalkosten Gesamt",
+
+"cost_quota_net_productive": "Personalkosten in % (ohne Abwesenheit)",
+"cost_quota_net_total": "Personalkosten in % (mit Abwesenheit)",
+"productivity_net_productive": "Produktivität: Umsatz Netto / Stunden Gesamt (ohne Abwesenheit)",
+"productivity_net_total": "Produktivität: Umsatz Netto / Stunden Gesamt (mit Abwesenheit)",
+"productivity_quantity_productive": "Produktivität: Absatz in Stk. / Stunden Gesamt (ohne Abwesenheit)",
+"productivity_quantity_a_productive": " ",
+"productivity_quantity_b_productive": "NUR TAG-ANSICHT Küche-Produktivität: Absatz Küche in Stk. / Stunden Gesamt (ohne Abwesenheit)",
+"productivity_quantity_c_productive": "NUR TAG-ANSICHT Service-Produktivität: Absatz Service in Stk. / Stunden Gesamt (ohne Abwesenheit)",
+"productivity_price_a_net_productive": " ",
+"productivity_price_b_net_productive": "NUR TAG-ANSICHT Küche-Produktivität: Umsatz Netto Küche / Stunden Gesamt (ohne Abwesenheit)",
+"productivity_price_c_net_productive": "NUR TAG-ANSICHT Service-Produktivität: Umsatz Netto Service / Stunden Gesamt (ohne Abwesenheit)",
+"productivity_price_d_net_productive": " ",
+"cost_a_quota_net_total": "NUR TAG-ANSICHT Personalkosten in % (mit Abwesenheit und Korrekturen)",
+"cost_b_quota_net_total": "NUR TAG-ANSICHT Küche-Personalkosten in % (ohne Abwesenheit)",
+"cost_c_quota_net_total": "NUR TAG-ANSICHT Service-Personalkosten in % (ohne Abwesenheit)",
+
+"cost_d_quota_net_total": " ",
+
+"count_reservations": " ",
+"count_reservations_avg": " ",
+
+"daily_personal_cost_a": "Personalkosten Gesamt",
+"daily_personal_cost_b": "Personalkosten Küche",
+"daily_personal_cost_c": "Personalkosten Service",
+"daily_personal_cost_d": " ",
+"daily_personal_duration_a": " ",
+"daily_personal_duration_b": "Personalstunden Küche",
+"daily_personal_duration_c": "Personalstunden Service",
+"daily_personal_duration_d": " ",
+"daily_personal_price_a_net": "Umsatz Netto Gesamt",
+"daily_personal_price_b_net": "Umsatz Netto Küche",
+"daily_personal_price_c_net": "Umsatz Netto Service",
+"daily_personal_price_d_net": " ",
+
+"duration_productive": "Personalstunden Produktiv",
+"duration_total": "Personalstunden Gesamt",
+
+"dynamic_performance_measure" : "Kennzahl",
+"dynamic_grouping_a" : "Standort Gruppierung Filter",
+
+"products_group_c": " ",
+
+"price_total_gross": " ",
+"price_total_net_per_invoice" : "Ø-Umsatz Netto je Rechnung" ,
+"price_total_net_per_guest" : "Ø-Umsatz Netto je Gast",
+"price_total_gross": " ",
+"price_total_gross_actual": " ",
+
+"transactions_group_a" : "Station",
+"transactions_group_b" : "MA Nummer",
+
+"stores_group_a" : "Konzept",
+"stores_group_b" : "Standorttyp",
+"stores_group_c" : "Operations Manager",
+"stores_group_d" : " ",
+"stores_group_e" : " ",
+"stores_group_f" : " ",
+"stores_group_g" : " ",
+"stores_group_h" : " ",
+"stores_group_i" : " ",
+"stores_group_j" : " ",
+
+"stores_dynamic_grouping_a_select": "Standort Gruppierung",
+
+"quantity_a_actual": "Absatz in Stück (ohne Loss)",
+"quantity_a_yoy": "Absatz in Stück (ohne Loss) Vorjahr",
+"quantity_a": "Absatz in Stück (ohne Loss)",
+"quantity_a_percent_of_total": "Anteil am Absatz (ohne Loss)",
+
+
+"business_day_is_future_select": "Budget Zeitraum",
+"business_day_is_future__all_data": "Gesamter Zeitraum",
+"business_day_is_future__until_yesterday": "Bis Gestern",
+
+"letze Zeile" : "ohne Komma!"
+
+}
