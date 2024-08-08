@@ -40,8 +40,12 @@ view: users {
   }
   dimension: age {
     #label: "AGE is just a number but I'm not sure how to enlarge it as I'm out of word"
-    type: number
+    type: string
     sql: ${TABLE}.age ;;
+  }
+  measure: age_mea {
+    type: number
+    sql: ${age} ;;
   }
   dimension_group: created {
     #label: "I'm not sure who created the world but this dimension group is created by me"
@@ -89,7 +93,7 @@ view: users {
     drill_fields: [first_name, last_name]
     link: {
       label: "chalega"
-      url: "{{link}}&country=USA"
+      url: "{{link}}&sorts=last_name"
     }
   }
 
@@ -97,7 +101,6 @@ view: users {
   set: detail {
     fields: [
   id,
-  first_name,
   last_name,
   events.count,
   orders.count,

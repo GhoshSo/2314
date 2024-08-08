@@ -21,9 +21,6 @@ view: order_items {
       label: "$%^"
     }
   }
-  dimension: test56 {
-
-  }
 
 
   parameter: exclude_royalties {
@@ -95,6 +92,26 @@ view: order_items {
           {{ rendered_value | date: "%Y-%Y-%Y"}}
           {% endif %}  ;;
     }
+
+  measure: cdiii {
+    #group_label: "{% parameter policy_portfolio_group_label %}"
+    #label: "Activated policies count"
+    type: count_distinct
+    sql:  ${inventory_item_id};;
+    #value_format_name: integer
+    description: "Count of policy activated during the period. Period is at policy start date."
+    drill_fields: [sale_price,sp_5]
+    link: {
+      label: "hut"
+      url: "{{ link }}&sorts=order_items.sp_5+desc&limit=20"
+    }
+  }
+
+  dimension: sp_5 {
+    sql: ${sale_price}>5;;
+    type:  yesno
+    hidden: yes
+  }
 
   dimension: formatted_returned {
     type: string

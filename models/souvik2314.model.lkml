@@ -1,5 +1,7 @@
 connection: "thelook"
 
+
+
 include: "/Dashboards/sales_dashboard.dashboard.lookml"
 
 # include all the views
@@ -135,6 +137,12 @@ explore: orders {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+  sql_always_where:
+  {% if orders.status_dim_selector._parameter_value == "cancelled" %} ${orders.status} = "CANCELLED"
+{% elsif orders.status_dim_selector._parameter_value == "pending" %} ${orders.status} = "PENDING"
+{% else %} 1=1
+{% endif %}
+  ;;
 }
 
 explore: order_items {

@@ -3,25 +3,29 @@ view: orders {
   drill_fields: [id]
 
   parameter: status_dim_selector{
-    type: unquoted
+    type: string
     allowed_value: {
-      label: "Status With Gender"
-      value: "statusgen"
+      label: "Status - Pending"
+      value: "pending"
     }
     allowed_value: {
-      label: "Only Status"
-      value: "status"
+      label: "Status - Cancelled"
+      value: "cancelled"
+    }
+    allowed_value: {
+      label: "Status - Completed"
+      value: "completed"
     }
   }
 
-  dimension: variable_dim {
-    type: string
-    sql: {% if status_dim_selector._parameter_value == "statusgen" %}
-               ${status_gen}
-         {% elsif status_dim_selector._parameter_value == "status" %}
-               ${status}
-         {% endif %} ;;
-  }
+  # dimension: variable_dim {
+  #   type: string
+  #   sql: {% if status_dim_selector._parameter_value == "statusgen" %}
+  #             ${status_gen}
+  #       {% elsif status_dim_selector._parameter_value == "status" %}
+  #             ${status}
+  #       {% endif %} ;;
+  # }
 
 
 
@@ -44,7 +48,7 @@ view: orders {
   }
   dimension: id {
     primary_key: yes
-    type: number
+    type: string
     sql: ${TABLE}.id ;;
   }
   dimension: status {
@@ -61,10 +65,10 @@ view: orders {
       url: "https://gcpl246.cloud.looker.com/dashboards/62"
     }
  }
-  measure: count {
-    type: count
-    #drill_fields: [detail*]
-  }
+  # measure: count {
+  #   type: count
+  #   #drill_fields: [detail*]
+  # }
 
   # dimension: action_test {
   #   sql: ${status} ;;
@@ -107,6 +111,11 @@ view: orders {
     sql: concat(${status}, " ",${users.gender}) ;;
   }
 
+  dimension: bbcd {
+    type: yesno
+    sql: ${status}="PENDING" AND ${id} IS NOT NULL ;;
+  }
+
   filter: test{
     type: string
     sql: ${status} ;;
@@ -126,10 +135,13 @@ view: orders {
     type: number
     sql: SUM(${user_id}) ;;
   }
-  # measure: count {
-  #   type: count
-  #   drill_fields: [detail*]
-  # }
+  measure: count {
+    type: count
+    drill_fields: [status, users.first_name, detail*]
+    link: {
+      url: "{{ link }}&sorts=users.first_name+desc&limit=20"
+    }
+  }
 
 
 
@@ -138,7 +150,6 @@ view: orders {
     fields: [
   id,
   users.id,
-  users.first_name,
   users.last_name,
   billion_orders.count,
   fakeorders.count,
